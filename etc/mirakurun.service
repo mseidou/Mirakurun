@@ -1,0 +1,24 @@
+[Unit]
+Description=PM2 process manager
+Documentation=https://pm2.keymetrics.io/
+After=network.target
+
+[Service]
+User=mirakurun
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+TimeoutStartSec=8
+Environment=PATH=$PATH:/home/mirakurun/.nvm/versions/node/v12.16.2/bin
+Environment=MIRAKURUN_HOME=/home/mirakurun/mirakurun
+Restart=always
+RestartSec=8
+
+WorkingDirectory=/home/mirakurun/.nvm/versions/node/v12.16.2/lib/node_modules/mirakurun
+ExecStart=/home/mirakurun/.nvm/versions/node/v12.16.2/lib/node_modules/pm2/bin/pm2 resurrect --no-daemon
+#ExecStart=/home/mirakurun/.nvm/versions/node/v12.16.2/lib/node_modules/pm2/bin/pm2 startup systemd
+ExecReload=/home/mirakurun/.nvm/versions/node/v12.16.2/lib/node_modules/pm2/bin/pm2 reload all
+ExecStop=/home/mirakurun/.nvm/versions/node/v12.16.2/lib/node_modules/pm2/bin/pm2 kill
+
+[Install]
+WantedBy=multi-user.target
