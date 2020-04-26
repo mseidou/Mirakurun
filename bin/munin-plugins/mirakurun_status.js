@@ -25,7 +25,7 @@ const munin = require("munin-plugin");
 const pkg = require("../../package.json");
 
 if (process.env.MIRAKURUN_HOME) {
-    let configPath = process.env.MIRAKURUN_HOME + '/etc/mirakurun/server.yml';
+    let configPath = process.env.MIRAKURUN_HOME + '/config/server.yml';
 } else {
     let configPath = "/usr/local/etc/mirakurun/server.yml";
 }

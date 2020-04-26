@@ -75,7 +75,7 @@ mirakurun_init() {
 mirakurun_config () {
   case $1 in
     server | tuners | channels )
-      "${EDITOR:-vi}" $MIRAKURUN_HOME/etc/mirakurun/$1.yml
+      "${EDITOR:-vi}" $MIRAKURUN_HOME/config/$1.yml
       ;;
     * )
       mirakurun_help

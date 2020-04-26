@@ -44,11 +44,11 @@ if (process.platform === "linux" || process.platform === "darwin") {
     if (process.env.MIRAKURUN_HOME) {
         const prefix = process.env.MIRAKURUN_HOME;
     } else {
-        const prefix = "/usr/local";
+        const prefix = "/usr/local/mirakurun";
     }
-    const configDir = path.join(prefix, "etc/mirakurun");
-    const dataDir = path.join(prefix, "var/db/mirakurun");
-    const logDir = path.join(prefix, "var/log");
+    const configDir = path.join(prefix, "config");
+    const dataDir = path.join(prefix, "db");
+    const logDir = path.join(prefix, "log");
 
     child_process.execSync(`mkdir -vp ${configDir}`);
     child_process.execSync(`mkdir -vp ${dataDir}`);
