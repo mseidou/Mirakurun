@@ -48,11 +48,11 @@ process.on("unhandledRejection", err => {
     console.error(err);
 });
 
-setEnv("SERVER_CONFIG_PATH", "/usr/local/etc/mirakurun/server.yml");
-setEnv("TUNERS_CONFIG_PATH", "/usr/local/etc/mirakurun/tuners.yml");
-setEnv("CHANNELS_CONFIG_PATH", "/usr/local/etc/mirakurun/channels.yml");
-setEnv("SERVICES_DB_PATH", "/usr/local/var/db/mirakurun/services.json");
-setEnv("PROGRAMS_DB_PATH", "/usr/local/var/db/mirakurun/programs.json");
+setEnv("SERVER_CONFIG_PATH", process.env.MIRAKURUN_HOME + "/etc/mirakurun/server.yml");
+setEnv("TUNERS_CONFIG_PATH", process.env.MIRAKURUN_HOME + "/etc/mirakurun/tuners.yml");
+setEnv("CHANNELS_CONFIG_PATH", process.env.MIRAKURUN_HOME + "/etc/mirakurun/channels.yml");
+setEnv("SERVICES_DB_PATH", process.env.MIRAKURUN_HOME + "/var/db/mirakurun/services.json");
+setEnv("PROGRAMS_DB_PATH", process.env.MIRAKURUN_HOME + "/var/db/mirakurun/programs.json");
 
 _.config.server = config.loadServer();
 _.config.channels = config.loadChannels();

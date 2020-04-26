@@ -24,7 +24,11 @@ const yaml = require("js-yaml");
 const munin = require("munin-plugin");
 const pkg = require("../../package.json");
 
-let configPath = "/usr/local/etc/mirakurun/server.yml";
+if (process.env.MIRAKURUN_HOME) {
+    let configPath = process.env.MIRAKURUN_HOME + '/etc/mirakurun/server.yml';
+} else {
+    let configPath = "/usr/local/etc/mirakurun/server.yml";
+}
 
 if (process.platform === "win32") {
     configPath = path.join(process.env.USERPROFILE, ".Mirakurun\\server.yml");

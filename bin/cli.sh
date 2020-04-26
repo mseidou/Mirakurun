@@ -14,9 +14,14 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-if [ `whoami` != "root" ]; then
-  echo "Error: root please."
-  exit 1
+#if [ `whoami` != "root" ]; then
+#  echo "Error: root please."
+#  exit 1
+#fi
+
+if [ -z ${MIRAKURUN_HOME} ]; then
+	echo "environment variable MIRAKURUN_HOME isn't specified"
+	exit 1
 fi
 
 shopt -s extglob
@@ -70,7 +75,7 @@ mirakurun_init() {
 mirakurun_config () {
   case $1 in
     server | tuners | channels )
-      "${EDITOR:-vi}" /usr/local/etc/mirakurun/$1.yml
+      "${EDITOR:-vi}" $MIRAKURUN_HOME/etc/mirakurun/$1.yml
       ;;
     * )
       mirakurun_help

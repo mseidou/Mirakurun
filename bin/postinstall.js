@@ -41,7 +41,11 @@ if (process.platform === "linux" || process.platform === "darwin") {
         process.exit(0);
     }
 
-    const prefix = "/usr/local";
+    if (process.env.MIRAKURUN_HOME) {
+        const prefix = process.env.MIRAKURUN_HOME;
+    } else {
+        const prefix = "/usr/local";
+    }
     const configDir = path.join(prefix, "etc/mirakurun");
     const dataDir = path.join(prefix, "var/db/mirakurun");
     const logDir = path.join(prefix, "var/log");
